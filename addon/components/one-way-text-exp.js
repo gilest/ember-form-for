@@ -15,10 +15,10 @@ export default Component.extend({
 
   value: computed('_value', {
     get() {
-      if (this.get('serializeValue')) {
-        return this.get('serializeValue')(this.get('_value'));
+      if (this.serializeValue) {
+        return this.serializeValue(this._value);
       } else {
-        return this.get('_value');
+        return this._value;
       }
     },
     set() {

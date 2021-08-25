@@ -11,23 +11,10 @@
     label=label
     control=control
     update=(action update) as |f|}}
-  {{#f.label required=required}}
-    {{f.control
-        accesskey=accesskey
-        autocomplete=autocomplete
-        autofocus=autofocus
-        autosave=autosave
-        dir=dir
-        disabled=disabled
-        hidden=hidden
-        lang=lang
-        list=list
-        required=required
-        tabindex=tabindex
-        title=title
-    }}
+  <f.label @required={{required}}>
+    <f.control @accesskey={{accesskey}} @autocomplete={{autocomplete}} @autofocus={{autofocus}} @autosave={{autosave}} @dir={{dir}} @disabled={{disabled}} @hidden={{hidden}} @lang={{lang}} @list={{list}} @required={{required}} @tabindex={{tabindex}} @title={{title}} />
     {{f.labelText}}
-  {{/f.label}}
+  </f.label>
   {{f.errors}}
   {{f.hint}}
 {{/form-field}}

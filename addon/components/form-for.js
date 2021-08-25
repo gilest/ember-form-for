@@ -1,14 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
+import { isPresent } from '@ember/utils';
+import { schedule } from '@ember/runloop';
+import { set, get } from '@ember/object';
 import layout from '../templates/components/form-for';
-
-const {
-  Component,
-  get,
-  inject: { service },
-  isPresent,
-  run: { schedule },
-  set
-} = Ember;
 
 const FormForComponent = Component.extend({
   layout,
@@ -23,7 +18,7 @@ const FormForComponent = Component.extend({
     this._super(...arguments);
 
     let formClasses = get(this, 'config.formClasses');
-    let classNames = get(this, 'classNames');
+    let classNames = this.classNames;
     set(this, 'classNames', (classNames || []).concat(formClasses));
 
     this.notifyPropertyChange();
@@ -57,7 +52,7 @@ const FormForComponent = Component.extend({
 
   actions: {
     submit(object) {
-      let promise = get(this, 'submit')(object);
+      let promise = this.submit(object);
 
       set(this, 'tabindex', undefined);
 

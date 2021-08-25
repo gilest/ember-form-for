@@ -1,9 +1,9 @@
-import Ember from 'ember';
-import EmberObject from '@ember/object';
+import { alias } from '@ember/object/computed';
+import PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
+import RSVP from 'rsvp';
+import EmberObject, { observer, computed } from '@ember/object';
 import Button from './button';
 import layout from 'ember-form-for/templates/components/form-controls/submit';
-
-const { computed: { alias }, PromiseProxyMixin, RSVP, computed, observer } = Ember;
 
 const SubmitButton = Button.extend({
   layout,
@@ -33,7 +33,7 @@ const SubmitButton = Button.extend({
     // returns non-promise.
     this.set('activePromise', EmberObject.extend(PromiseProxyMixin).create({
       promise: new RSVP.Promise((resolve) => {
-        resolve(this.get('submit')());
+        resolve(this.submit());
       })
     }));
     return false;
@@ -48,7 +48,7 @@ const SubmitButton = Button.extend({
   }),
 
   resetAction: observer('reset', 'activePromise.isFulfilled', 'activePromise.isRejected', function() {
-    if (this.get('reset') && (this.get('activePromise.isFulfilled') || this.get('activePromise.isRejected'))) {
+    if (this.reset && (this.get('activePromise.isFulfilled') || this.get('activePromise.isRejected'))) {
       this.set('activePromise', undefined);
     }
   })

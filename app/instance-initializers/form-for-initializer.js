@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import { assign } from '@ember/polyfills';
+import { set } from '@ember/object';
 import config from '../config/environment';
-
-const { assign, set } = Ember;
 
 const DEFAULT_CONFIG = {
   buttonClasses: ['form-button'],

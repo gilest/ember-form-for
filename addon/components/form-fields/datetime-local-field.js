@@ -1,5 +1,8 @@
 import TextField from './text-field';
-import { toDatetimeLocalString, formatTimeZoneOffset } from '../../utils/date';
+import {
+  toDatetimeLocalString,
+  formatTimeZoneOffset
+} from '../../utils/date';
 
 export default TextField.extend({
   type: 'datetime-local',

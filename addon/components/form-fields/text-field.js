@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { get, set } from '@ember/object';
 import layout from '../../templates/components/form-fields/text-field';
-
-const { Component, set, get } = Ember;
 
 const TextFieldComponent = Component.extend({
   tagName: '',
@@ -16,17 +15,17 @@ const TextFieldComponent = Component.extend({
 
   actions: {
     _update(value) {
-      if (this.get('deserializeValue')) {
+      if (this.deserializeValue) {
         this.update(
-          this.get('object'),
-          this.get('propertyName'),
-          this.get('deserializeValue')(
+          this.object,
+          this.propertyName,
+          this.deserializeValue(
             value,
-            get(this.get('object'), this.get('propertyName'))
+            get(this.object, this.propertyName)
           )
         );
       } else {
-        this.update(this.get('object'), this.get('propertyName'), value);
+        this.update(this.object, this.propertyName, value);
       }
     }
   }
