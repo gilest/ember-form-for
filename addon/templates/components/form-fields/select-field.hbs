@@ -10,7 +10,7 @@
     form=form
     label=label
     control=control
-    update=(action update) as |f|}}
+    update=(action (or @update this.update)) as |f|}}
   <f.label @required={{required}} />
   <f.control @accesskey={{accesskey}} @autofocus={{autofocus}} @dir={{dir}} @disabled={{disabled}} @groupLabelPath={{groupLabelPath}} @hidden={{hidden}} @includeBlank={{includeBlank}} @prompt={{prompt}} @promptIsSelectable={{promptIsSelectable}} @lang={{lang}} @multiple={{multiple}} @options={{options}} @optionValuePath={{optionValuePath}} @optionTargetPath={{optionTargetPath}} @optionLabelPath={{optionLabelPath}} @required={{required}} @search={{search}} @tabindex={{tabindex}} />
   {{f.errors}}

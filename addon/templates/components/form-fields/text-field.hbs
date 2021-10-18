@@ -12,7 +12,7 @@
     form=form
     label=label
     control=control
-    update=(action this.update) as |f|}}
+    update=(action (or @update this.update)) as |f|}}
   <f.label @required={{required}} />
   <f.control
     @accept={{accept}}

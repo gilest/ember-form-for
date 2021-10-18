@@ -10,7 +10,7 @@
     hint=hint
     label=label
     control=control
-    update=(action update) as |f|}}
+    update=(action (or @update this.update)) as |f|}}
   <f.label @required={{required}}>
     <f.control @accesskey={{accesskey}} @autocomplete={{autocomplete}} @autofocus={{autofocus}} @autosave={{autosave}} @dir={{dir}} @disabled={{disabled}} @hidden={{hidden}} @lang={{lang}} @list={{list}} @required={{required}} @tabindex={{tabindex}} @title={{title}} />
     {{f.labelText}}
