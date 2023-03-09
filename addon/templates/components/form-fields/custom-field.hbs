@@ -13,7 +13,7 @@
     update=(action this.update) as |f|}}
   {{#if component}}
     {{component component f=f}}
-  {{else if hasBlock}}
+  {{else if (has-block)}}
     {{yield f}}
   {{else}}
     <f.label @required={{required}} />
