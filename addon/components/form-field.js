@@ -8,7 +8,6 @@ import { isPresent, isEmpty } from '@ember/utils';
 import {
   set,
   observer,
-  getWithDefault,
   get,
   computed
 } from '@ember/object';
@@ -165,15 +164,15 @@ const FormFieldComponent = Component.extend({
   },
 
   value: computed('rawValue', function() {
-    let serializeValue = getWithDefault(this, 'serializeValue', (value) => value);
-    return serializeValue(this.rawValue);
+    let serializeValue = get(this, 'serializeValue');
+    return serializeValue ? serializeValue(this.rawValue) : this.rawValue;
   }),
 
   actions: {
     processUpdate(object, propertyName, value) {
       let rawValue = this.rawValue;
-      let deserializeValue = getWithDefault(this, 'deserializeValue', (value) => value);
-      this.update(object, propertyName, deserializeValue(value, rawValue));
+      let deserializeValue = get(this, 'deserializeValue');
+      this.update(object, propertyName, deserializeValue ? deserializeValue(value, rawValue) : value);
     }
   }
 });

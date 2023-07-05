@@ -1,7 +1,7 @@
-{{#if errors}}
-  <FormFor::CustomTag @tagName={{errorsTagName}} @class={{joinedErrorClasses}}>
-    {{#each limitedErrors as |error index|}}
-      <FormFor::CustomTag @tagName={{messageTagName}} @id={{concat errorId "-" index}} @role="alert">
+{{#if this.errors}}
+  <FormFor::CustomTag @tagName={{this.errorsTagName}} @class={{this.joinedErrorClasses}}>
+    {{#each this.limitedErrors as |error index|}}
+      <FormFor::CustomTag @tagName={{this.messageTagName}} @id={{concat this.errorId "-" index}} @role="alert">
         {{#if (has-block)}}
           {{yield error}}
         {{else}}
